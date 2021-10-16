@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/frames/goblin_run_anim_f1.png" type="Texture" id=1]
 [ext_resource path="res://Assets/frames/goblin_idle_anim_f0.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Enemies/Goblin/Goblin.gd" type="Script" id=7]
 [ext_resource path="res://Assets/frames/goblin_run_anim_f2.png" type="Texture" id=8]
 [ext_resource path="res://Assets/frames/goblin_run_anim_f3.png" type="Texture" id=9]
+[ext_resource path="res://Damage/Hitbox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Damage/Hurtbox.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -26,6 +28,12 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 radius = 4.56933
 
+[sub_resource type="CircleShape2D" id=3]
+radius = 5.49016
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 4.54106
+
 [node name="Goblin" type="KinematicBody2D"]
 script = ExtResource( 7 )
 
@@ -36,3 +44,20 @@ animation = "Run"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.417139, 1.41827 )
 shape = SubResource( 2 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 11 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0.525558, 1.47157 )
+shape = SubResource( 3 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 10 )]
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0.420448, 1.26134 )
+shape = SubResource( 4 )
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]

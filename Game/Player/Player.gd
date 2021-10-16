@@ -4,7 +4,7 @@ var Bullet = load("res://Player/Bullet.tscn")
 
 export(int) var SPEED = 90
 
-var fire_rate = 0.3
+export(float) var fire_rate = 0.3
 var can_attack = true
 
 var direction = Vector2.ZERO

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/frames/elf_m_idle_anim_f0.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/frames/elf_m_run_anim_f0.png" type="Texture" id=7]
 [ext_resource path="res://Assets/frames/elf_m_idle_anim_f2.png" type="Texture" id=8]
 [ext_resource path="res://Assets/frames/elf_m_run_anim_f3.png" type="Texture" id=9]
+[ext_resource path="res://Damage/Hurtbox.tscn" type="PackedScene" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -27,18 +28,34 @@ animations = [ {
 radius = 5.28651
 height = 8.49606
 
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 5.92321
+height = 6.77232
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
+fire_rate = 0.2
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -0.140312, 4.34954 )
 shape = SubResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Hurtbox" parent="." instance=ExtResource( 10 )]
+visible = false
+collision_layer = 2
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( -0.0936432, 4.49492 )
+shape = SubResource( 3 )
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="Hurtbox"]
