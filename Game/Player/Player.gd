@@ -1,12 +1,13 @@
 extends KinematicBody2D
 
 
-export(int) var SPEED = 80
+export(int) var SPEED = 90
 
 var direction = Vector2.ZERO
 onready var sprite = $Sprite
 
-
+func _ready():
+	Globals.Player = self
 
 func _physics_process(delta):
 	var input = Vector2.ZERO
