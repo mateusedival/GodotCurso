@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export(int) var SPEED = 40
 onready var direction: Vector2 
-var distance = 25
+export(int) var distance = 175
 var initial_position
 var flip: bool = false
 onready var sprite = $AnimatedSprite
@@ -15,13 +15,17 @@ func _ready():
 func _process(delta):
 	var velocity = direction * SPEED
 	
+	var collide = move_and_collide(velocity * delta)
 	
-	velocity = move_and_slide(velocity)
+	if collide:
+		direction *= -1
+		flip = !flip		
 	
 	if(direction != Vector2.ZERO):
 		sprite.play("Run")
 	else:
 		sprite.play("Idle")
+	
 	
 	sprite.flip_h = direction.x < 0
 	

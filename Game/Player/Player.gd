@@ -1,7 +1,11 @@
 extends KinematicBody2D
 
+var Bullet = load("res://Player/Bullet.tscn")
 
 export(int) var SPEED = 90
+
+var fire_rate = 0.3
+var can_attack = true
 
 var direction = Vector2.ZERO
 onready var sprite = $Sprite
@@ -25,3 +29,18 @@ func _physics_process(delta):
 		sprite.play("Run")
 	
 	sprite.flip_h = direction.x < 0
+	
+	if Input.is_action_pressed("ui_attack") and can_attack:
+		shoot()
+		
+func shoot():
+	var bullet = Bullet.instance()
+	bullet.global_position = global_position
+	bullet.direction = global_position.direction_to(get_global_mouse_position())
+	get_tree().current_scene.add_child(bullet)
+	can_attack = false
+	$Timer.start(fire_rate)
+	
+func _on_Timer_timeout():
+	can_attack = true
+	pass # Replace with function body.
