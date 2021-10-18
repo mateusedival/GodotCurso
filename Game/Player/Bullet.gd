@@ -1,6 +1,7 @@
 extends Area2D
 
 export(int) var velocity = 400
+export(bool) var rote = true
 var direction = Vector2.ZERO setget set_dir
 
 func _ready():
@@ -8,7 +9,8 @@ func _ready():
 
 func set_dir(value):
 	direction = value.normalized()
-	rotation = direction.angle()
+	if rote:
+		rotation = direction.angle()
 	
 func _physics_process(delta):
 	global_position += direction * velocity * delta

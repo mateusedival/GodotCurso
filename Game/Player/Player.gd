@@ -9,9 +9,11 @@ var can_attack = true
 
 var direction = Vector2.ZERO
 onready var sprite = $Sprite
+var stats = PlayerStats
 
 func _ready():
 	Globals.Player = self
+	stats.connect("dead",self,"_on_Stats_dead")
 
 func _physics_process(delta):
 	var input = Vector2.ZERO
@@ -43,4 +45,13 @@ func shoot():
 	
 func _on_Timer_timeout():
 	can_attack = true
-	pass # Replace with function body.
+	
+func _on_Stats_dead():
+	queue_free()
+
+
+func _on_Hurtbox_area_entered(hitbox):
+	stats.health -= hitbox.damage
+	print(stats.health)
+	
+	
