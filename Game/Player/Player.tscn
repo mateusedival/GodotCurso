@@ -56,6 +56,10 @@ collision_layer = 2
 position = Vector2( -0.0936432, 4.49492 )
 shape = SubResource( 3 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 

@@ -45,13 +45,20 @@ func _physics_process(delta):
 	elif global_position.x > initial_position.x + distance and flip:
 		direction= Vector2.LEFT
 		flip = false
+		
+	var aim = $Range.get_overlapping_bodies()
+	
+	if (can_shoot and aim):
+		shoot( global_position.direction_to(aim[0].global_position))
 	
 	
 func shoot(shoot_direction):
 	var bullet = Bullet.instance()
 	bullet.direction = shoot_direction
 	bullet.global_position = global_position 
-	get_tree().current_scene.add_child(bullet)	
+	get_tree().current_scene.add_child(bullet)
+	$Timer.start(fire_rate)
+	can_shoot = false
 	
 	
 func _on_Stats_dead():
@@ -65,8 +72,6 @@ func _on_Hurtbox_area_entered(hitbox):
 
 func _on_Range_body_entered(body):
 	print(body)
-	var shoot_direction = global_position.direction_to(body.global_position) 
-	shoot(shoot_direction)
 
 
 func _on_Timer_timeout():

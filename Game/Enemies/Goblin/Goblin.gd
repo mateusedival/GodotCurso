@@ -7,7 +7,7 @@ onready var sprite = $AnimatedSprite
 var knockback =  Vector2.ZERO
 
 func _ready():
-	print(player)
+	pass
 
 func _physics_process(delta):
 	

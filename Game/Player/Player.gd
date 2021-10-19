@@ -52,6 +52,7 @@ func _on_Stats_dead():
 
 func _on_Hurtbox_area_entered(hitbox):
 	stats.health -= hitbox.damage
+	$Hurtbox.start_invincibility(0.5)
 	print(stats.health)
 	
 	

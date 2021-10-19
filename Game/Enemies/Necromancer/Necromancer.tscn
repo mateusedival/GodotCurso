@@ -39,7 +39,7 @@ radius = 7.02431
 height = 3.01263
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 74.2344
+radius = 52.3743
 
 [node name="Necromancer" type="KinematicBody2D"]
 collision_layer = 64
@@ -83,7 +83,6 @@ shape = SubResource( 5 )
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="dead" from="Stats" to="." method="_on_Stats_dead"]
-[connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="Hitbox"]
