@@ -16,7 +16,7 @@ height = 3.75737
 position = Vector2( 0.176977, -0.117985 )
 collision_layer = 0
 script = ExtResource( 2 )
-velocity = 200
+velocity = 300
 rote = false
 
 [node name="Sprite" type="Sprite" parent="."]

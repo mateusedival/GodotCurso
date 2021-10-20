@@ -38,3 +38,5 @@ func _on_Stats_dead():
 func _on_Hurtbox_area_entered(hitbox):
 	$Stats.health -= hitbox.damage
 	knockback = global_position.direction_to(hitbox.global_position) * -70
+	$Hurtbox.start_invincibility(0.2)
+	$AnimationPlayer.play("Damage")
