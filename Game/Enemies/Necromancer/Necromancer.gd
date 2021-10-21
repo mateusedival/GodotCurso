@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 var Bullet = load("res://Enemies/Necromancer/NecromancerBullet.tscn")
+const HIT_SFX = preload("res://SFX/Necromancer/NecromanceGruntSFX.wav")
+const TOSS_SFX = preload("res://SFX/Necromancer/TossSFX.mp3")
 
 export(int) var SPEED = 40
 onready var direction: Vector2 
@@ -59,7 +61,7 @@ func shoot(shoot_direction):
 	get_tree().current_scene.add_child(bullet)
 	$Timer.start(fire_rate)
 	can_shoot = false
-	
+	SfxHandler.play_sfx(TOSS_SFX)
 	
 func _on_Stats_dead():
 	queue_free()
@@ -69,6 +71,7 @@ func _on_Hurtbox_area_entered(hitbox):
 	$Stats.health -= hitbox.damage
 	knockback = global_position.direction_to(hitbox.global_position) * -90
 	$Hurtbox.start_invincibility(0.2)
+	SfxHandler.play_sfx(HIT_SFX,Vector2(0.7,1.2))
 	$AnimationPlayer.play("Damage")
 
 

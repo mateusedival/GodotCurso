@@ -15,14 +15,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "Run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Idle",
 "speed": 5.0
 } ]
 
@@ -67,6 +67,7 @@ frames = SubResource( 1 )
 animation = "Run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -0.0701523, 2.736 )
 shape = SubResource( 2 )
 
@@ -74,6 +75,7 @@ shape = SubResource( 2 )
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
+visible = false
 position = Vector2( -0.33371, 2.50282 )
 shape = SubResource( 3 )
 
@@ -82,17 +84,19 @@ visible = false
 collision_layer = 8
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
+visible = false
 position = Vector2( -0.33371, 2.66968 )
 shape = SubResource( 4 )
 
 [node name="Stats" parent="." instance=ExtResource( 12 )]
-max_health = 20
+max_health = 4
 
 [node name="Range" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+visible = false
 shape = SubResource( 5 )
 
 [node name="Timer" type="Timer" parent="."]

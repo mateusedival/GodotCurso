@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PlayerGruntSFX.wav-8b576da41f6588254f74c96d5cbdf3b0.sample"
+
+[deps]
+
+source_file="res://SFX/Player/PlayerGruntSFX.wav"
+dest_files=[ "res://.import/PlayerGruntSFX.wav-8b576da41f6588254f74c96d5cbdf3b0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/TossSFX.mp3-c418cdc99bf305feefc844d1c9a3f767.mp3str"
+
+[deps]
+
+source_file="res://SFX/Necromancer/TossSFX.mp3"
+dest_files=[ "res://.import/TossSFX.mp3-c418cdc99bf305feefc844d1c9a3f767.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

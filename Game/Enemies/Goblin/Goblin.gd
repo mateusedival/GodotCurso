@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+const HIT_SFX = preload("res://SFX/Player/PlayerGruntSFX.wav")
+
 export(int) var SPEED = 50
 var direction = Vector2.ZERO
 onready var player = Globals.Player
@@ -39,4 +41,5 @@ func _on_Hurtbox_area_entered(hitbox):
 	$Stats.health -= hitbox.damage
 	knockback = global_position.direction_to(hitbox.global_position) * -70
 	$Hurtbox.start_invincibility(0.2)
+	SfxHandler.play_sfx(HIT_SFX,Vector2(0.7,1.2))
 	$AnimationPlayer.play("Damage")
