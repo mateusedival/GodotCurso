@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 export(int) var velocity = 400
 var direction = Vector2.ZERO setget set_dir
@@ -11,8 +11,11 @@ func set_dir(value):
 		rotation = direction.angle()
 	
 func _physics_process(delta):
-	global_position += direction * velocity * delta
-
+	
+	var collision = move_and_collide(direction * velocity * delta)
+	
+	if collision:
+		queue_free()
 
 
 func _on_Timer_timeout():

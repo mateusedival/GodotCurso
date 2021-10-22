@@ -10,7 +10,5 @@ func play_sfx(sound: AudioStream, pitch_range: Vector2 = Vector2(1.0,1.0),
 		stream.pitch_scale = rand_range(pitch_range.x, pitch_range.y)
 		stream.volume_db = volume_db
 		
-		
-		
 		parent.add_child(stream)
 		stream.play()

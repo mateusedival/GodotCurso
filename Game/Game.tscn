@@ -364,7 +364,7 @@ margin_top = 197.99
 margin_right = 210.414
 margin_bottom = 213.99
 custom_fonts/font = ExtResource( 3 )
-text = "Fuja dos Goblins ou os mates"
+text = "Fuja dos Goblins ou os mate"
 __meta__ = {
 "_edit_use_anchors_": false
 }
